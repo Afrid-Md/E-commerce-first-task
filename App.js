@@ -6,6 +6,7 @@ import Products from './Components/Products/Products';
 import Footer from './Components/Footer/Footer';
 import Cart from './Components/Cart/Cart';
 import { useState } from 'react';
+import CartProvider from './Components/Store/cart-provider';
 
 
 function App() {
@@ -18,15 +19,15 @@ function App() {
     setCart(false);
   } 
   return (
-    <React.Fragment>
+    <CartProvider>
       {cart &&<Cart onclose={cartClose}/>}
       <NavBar onOpen={cartOpen}/>
       <TheGeneric/>
-      <Products/>
+      <Products onOpen={cartOpen}/>
       <footer>
         <Footer/>
       </footer>
-    </React.Fragment>
+    </CartProvider>
   );
 }
 
