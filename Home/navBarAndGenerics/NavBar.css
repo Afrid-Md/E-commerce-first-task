@@ -1,0 +1,14 @@
+.ok
+{
+    padding:15px;
+    color:rgb(163, 163, 163);
+    text-decoration: none;
+}
+
+.ok:hover{
+    color:white;
+}
+
+.active{
+    color: white;
+}
