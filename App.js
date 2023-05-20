@@ -1,33 +1,18 @@
-import NavBar from './Components/Navbar_and_card/Navbar';
-import './App.css';
 import React from 'react';
-import TheGeneric from './Components/Navbar_and_card/TheGenerics';
-import Products from './Components/Products/Products';
-import Footer from './Components/Footer/Footer';
-import Cart from './Components/Cart/Cart';
-import { useState } from 'react';
-import CartProvider from './Components/Store/cart-provider';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import StorePage from '../src/Components/StorePage/StorePage'
+import AboutPage from './Components/AboutPage/AboutPage';
+import HomePage from './Components/Home/HomePage';
 
-
+const router = createBrowserRouter([
+    {path:'/',element:<HomePage/> },
+    {path:'/store', element:<StorePage/>},
+    {path:'/aboutpage',element:<AboutPage/>}
+])
 function App() {
-  const[cart, setCart]=useState(false);
-  const cartOpen=()=>{
-    setCart(true);
-  }
 
-  const cartClose=()=>{
-    setCart(false);
-  } 
   return (
-    <CartProvider>
-      {cart &&<Cart onclose={cartClose}/>}
-      <NavBar onOpen={cartOpen}/>
-      <TheGeneric/>
-      <Products onOpen={cartOpen}/>
-      <footer>
-        <Footer/>
-      </footer>
-    </CartProvider>
+    <RouterProvider router={router}/>    
   );
 }
 
